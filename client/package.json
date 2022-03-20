@@ -4,9 +4,32 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "yarn eslint && yarn typecheck",
+    "typecheck": "tsc -p .",
+    "eslint": "eslint '**/*.{ts,tsx}'",
+    "ci": "yarn install --immutable --immutable-cache --check-cache"
+  },
+  "eslintConfig": {
+    "extends": [
+      "next/core-web-vitals"
+    ],
+    "parserOptions": {
+      "project": "tsconfig.json"
+    },
+    "rules": {
+      "@next/next/no-img-element": "off",
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ]
+    }
   },
   "dependencies": {
     "next": "12.1.0",
