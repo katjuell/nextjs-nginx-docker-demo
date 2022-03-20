@@ -1,4 +1,4 @@
-const options = {
+module.exports = {
   tabWidth: 4,
   printWidth: 120,
   proseWrap: 'preserve',
@@ -25,5 +25,3 @@ const options = {
     },
   ],
 }
-
-module.exports = options

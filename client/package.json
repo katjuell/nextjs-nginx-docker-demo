@@ -15,7 +15,8 @@
   },
   "eslintConfig": {
     "extends": [
-      "next/core-web-vitals"
+      "next/core-web-vitals",
+      "next/babel"
     ],
     "parserOptions": {
       "project": "tsconfig.json"
