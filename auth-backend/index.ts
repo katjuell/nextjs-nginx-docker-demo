@@ -11,7 +11,7 @@ const startServer = async (port: number): Promise<void> => {
 
     // CORS
     const corsOptions = {
-        origin: `${ORIGIN_URL || 'http://localhost:3000'}`,
+        origin: `${ORIGIN_URL || 'http://localhost:8080'}`,
         allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: true,
         preFlightContinue: true,
