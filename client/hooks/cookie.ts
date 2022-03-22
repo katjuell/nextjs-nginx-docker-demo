@@ -1,9 +1,8 @@
-import { FunctionComponent, useEffect, useState, useCallback } from 'react'
-import Link from 'next/link'
+import { useState, useCallback, useEffect } from 'react'
 
-export const Nav: FunctionComponent = () => {
-    const [isMounted, setIsMounted] = useState<boolean>(false)
+export const useCookie = () => {
     const [hasUser, setHasUser] = useState<boolean>(false)
+    const [isMounted, setIsMounted] = useState<boolean>(false)
     const callRoute = async (route: string): Promise<void> => {
         try {
             await fetch(`http://localhost:3001/${route}`, {
@@ -26,8 +25,9 @@ export const Nav: FunctionComponent = () => {
     const setUser = useCallback(() => {
         const user = getCookies()
 
-        user === undefined ? setHasUser(true) : setHasUser(false)
+        user ? setHasUser(true) : setHasUser(false)
     }, [])
+
     useEffect(() => {
         setIsMounted(true)
     }, [])
@@ -36,24 +36,9 @@ export const Nav: FunctionComponent = () => {
             setUser()
         }
     }, [isMounted, setUser])
-    useEffect(() => {
-        setUser()
-    }, [hasUser, setUser])
 
-    return (
-        <div className="space-between mb-20 flex w-2/4 items-center justify-end px-48 text-center">
-            {hasUser ? (
-                <button onClick={() => callRoute('login')} className="mr-3 font-bold text-blue-600">
-                    Login
-                </button>
-            ) : (
-                <button onClick={() => callRoute('logout')} className="mr-3 font-bold text-blue-600">
-                    Logout
-                </button>
-            )}
-            <Link href="/" passHref={true}>
-                <a className="font-bold text-blue-600">Home</a>
-            </Link>
-        </div>
-    )
+    return {
+        callRoute,
+        hasUser,
+    }
 }
