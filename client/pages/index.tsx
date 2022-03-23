@@ -18,30 +18,27 @@ const Home: NextPage = () => {
                         Logout
                     </button>
                 )}
-                <Link href="/" passHref={true}>
-                    <a className="font-bold text-blue-600">Home</a>
-                </Link>
             </div>
             <h1 className="text-6xl font-bold">Next.js Demo</h1>
 
             <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
                 <div className="mt-6 w-96 rounded-xl border p-6 text-left">
-                    <Link href="/blog" passHref={true}>
+                    <Link href="/blog.html" passHref={true}>
                         <a className="text-2xl font-bold text-blue-600 hover:text-black focus:text-black">
                             Explore the Blog
                         </a>
                     </Link>
-                    <p className="mt-4 text-xl">Find in-depth resources on technical subjects.</p>
+                    <p className="mt-4 text-xl">Find resources on technical subjects.</p>
                 </div>
 
                 {cookieHook.hasUser && (
                     <div className="mt-6 w-96 rounded-xl border p-6 text-left">
-                        <Link href="/learnings">
+                        <Link href="/user-stories">
                             <a className="text-2xl font-bold text-blue-600 hover:text-black focus:text-black">
-                                Curricula
+                                User Stories
                             </a>
                         </Link>
-                        <p className="mt-4 text-xl">Start working with one of our learning pathways.</p>
+                        <p className="mt-4 text-xl">Hear more from happy clients.</p>
                     </div>
                 )}
             </div>
