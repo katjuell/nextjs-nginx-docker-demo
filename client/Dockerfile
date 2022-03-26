@@ -11,7 +11,7 @@ COPY package.json yarn.lock ./
 RUN yarn ci
 
 
-FROM node:16-alpine AS static
+FROM node:16-alpine
 
 WORKDIR /app
 
